@@ -57,9 +57,9 @@ print(char.decode())
 print("start sending RPC")
 
 # signal
-#v = np.arange(0,100,1/100)
+
 t = np.arange(0,10,0.1)
-v = np.arange(0,100,0.1)
+v = np.arange(0,100,0.01)
 # Callbacks
 def on_connect(self, mosq, obj, rc):
       print("Connected rc: " + str(rc))
@@ -67,9 +67,9 @@ def on_message(mosq, obj, msg):
       print("[Received] Topic: " + msg.topic + ", Message: " + str(msg.payload) + "\n")
       input_data = msg.payload.decode(encoding = 'UTF-8')
       
-      for num in range(0, 100):
-            v[num] = input_data
-            print("%f", v[num])
+      for i in range(0, 100):
+            v[i] = input_data
+            print("%f", v[i])
             
 def on_subscribe(mosq, obj, mid, granted_qos):
       print("Subscribed OK")
